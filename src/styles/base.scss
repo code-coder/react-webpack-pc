@@ -1,0 +1,277 @@
+@import './variables.scss';
+
+/* reset */
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+fieldset,
+img {
+  border: 0;
+}
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+  font-style: normal;
+  font-weight: normal;
+}
+ol,
+ul {
+  list-style: none;
+}
+caption,
+th {
+  text-align: left;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+q:before,
+q:after {
+  content: '';
+}
+abbr,
+acronym {
+  border: 0;
+}
+* {
+  box-sizing: border-box;
+
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: $black;
+}
+li {
+  list-style: none;
+}
+input,
+img {
+  border: none;
+}
+img {
+  object-fit: cover;
+}
+html {
+  height: 100%;
+  body {
+    font: normal normal normal 14px PingFang SC, Hiragino Sans GB, Microsoft YaHei UI, Microsoft YaHei;
+    line-height: 14px;
+    color: $black;
+    height: 100%;
+    & > div:first-of-type {
+      height: 100%;
+    }
+  }
+}
+
+// 字体配置列表
+$fontSizeList: (title-xxxl, $title-xxxl), (title-xxl $title-xxl), (title-xl $title-xl), (title-lg $title-lg),
+  (title-md $title-md), (text-md $text-md), (text-sm $text-sm), (text-xs $text-xs), (text-xxs $text-xxs);
+// 中文字体类
+@each $className, $size in $fontSizeList {
+  .#{$className} {
+    font-family: PingFangSC-Regular;
+    font-size: $size;
+  }
+}
+@each $className, $size in $fontSizeList {
+  .#{$className}-s {
+    font-family: PingFangSC-Semibold;
+    font-weight: 600;
+    font-size: $size;
+  }
+}
+@each $className, $size in $fontSizeList {
+  .#{$className}-m {
+    font-family: PingFangSC-Medium;
+    font-weight: 500;
+    font-size: $size;
+  }
+}
+
+.length-restrict {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.length-restrict-2-line {
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  /* autoprefixer: off */
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+/*  布局用flex  */
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.row-center {
+  @extend .row;
+  align-items: center;
+}
+
+.row-center-around {
+  @extend .row-center;
+  justify-content: space-around;
+}
+
+.row-center-between {
+  @extend .row-center;
+  justify-content: space-between;
+}
+
+.row-center-center {
+  @extend .row-center;
+  justify-content: center;
+}
+
+.row-end-between {
+  @extend .row;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+.col-around {
+  @extend .col;
+  justify-content: space-around;
+}
+.col-center {
+  @extend .col;
+  align-items: center;
+}
+
+.col-center-around {
+  @extend .col-center;
+  justify-content: space-around;
+}
+
+.col-center-between {
+  @extend .col-center;
+  justify-content: space-between;
+}
+
+.col-center-center {
+  @extend .col-center;
+  justify-content: center;
+}
+
+.no-more {
+  color: #cccccc;
+  text-align: center;
+}
+
+// 实际布局
+.main-header {
+  margin-bottom: 1px;
+  padding: 0 24px 0 0;
+  background: #fff;
+  font-style: 14px;
+  box-shadow: 0 2px 4px 0 rgba(50, 64, 77, 0.2);
+  .setting-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+    height: 100%;
+    margin-left: auto;
+    .user-name {
+      width: 64px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
+.menu-sider {
+  overflow: auto;
+  .logo {
+    @extend .col-center-center;
+    width: 100%;
+    height: 64px;
+    overflow: hidden;
+    background: #002140;
+    color: #fff;
+  }
+}
+
+.tool-box {
+  @extend .col-around;
+  flex-shrink: 0;
+  padding: 0 24px;
+  width: 100%;
+  transition: width 0.15s ease-out;
+  height: 98px;
+  background-color: #fff;
+  font-size: 14px;
+  .btns-wrapper {
+    button {
+      margin-left: 8px;
+    }
+  }
+  .title {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 28px;
+    margin: 0;
+    color: rgba(0, 0, 0, 0.85);
+  }
+}
+.base-content-box {
+  flex: 1;
+  width: 100%;
+  overflow: auto;
+}
+
+@import './animate.scss';
